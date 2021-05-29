@@ -13,6 +13,7 @@ import com.presinal.challenge.truelogicsoftware.playersvc.service.exception.NotS
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class PlayerController {
     private PlayerService service;
     
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SavePlayersResultDTO savePlayers(@RequestBody PlayersDTO players) {
+    public SavePlayersResultDTO savePlayers(@RequestBody @Validated PlayersDTO players) {
         SavePlayersResultDTO result = new SavePlayersResultDTO();
         players.getPlayers().forEach(p -> {
                 result.getResult().add(service.savePlayer(p).getDescription());

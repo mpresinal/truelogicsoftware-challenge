@@ -30,7 +30,11 @@ public class PlayerServiceImpl implements PlayerService {
     
     @Override
     @Transactional(readOnly = false)
-    public SavePlayerResult savePlayer(Player player) {        
+    public SavePlayerResult savePlayer(Player player) {   
+        if (player == null) {
+            throw new NullPointerException("player cannot be null");
+        }
+        
         String playerName = player.getName();
         if (player.isExpert()) {
             repository.save(player);

@@ -7,7 +7,9 @@ package com.presinal.challenge.truelogicsoftware.playersvc.service;
 
 import com.presinal.challenge.truelogicsoftware.playersvc.domain.SavePlayerResult;
 import com.presinal.challenge.truelogicsoftware.playersvc.entity.Player;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -59,10 +61,16 @@ public class PlayerServiceTest {
         assertEquals(result.getActionTaken(), SavePlayerResult.ActionTaken.NOT_FIT);
     }
     
-    @Test
+    @Test    
     public void whenPlayerTypeIsNull_doNothing() {
         Mockito.doNothing().when(playerProducer).send(ArgumentMatchers.any(Player.class));
         SavePlayerResult result = service.savePlayer(new Player("Reptile", null));        
         assertEquals(result.getActionTaken(), SavePlayerResult.ActionTaken.NOT_FIT);
+    }
+    
+    @Test
+    public void whenPlayerIsNull_throwNPE() {
+        Mockito.doNothing().when(playerProducer).send(ArgumentMatchers.any(Player.class));
+        assertThrows(NullPointerException.class, () -> service.savePlayer(null));        
     }
 }

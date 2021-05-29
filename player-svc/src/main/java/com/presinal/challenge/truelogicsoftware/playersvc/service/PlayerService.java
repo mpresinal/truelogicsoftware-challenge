@@ -18,6 +18,7 @@ public interface PlayerService {
      * Save the player based on its type in DB or send it to topic queue.
      * @param player
      * @return a new <code>SavePlayerResult</code>
+     * @throws NullPointerException if player is null
      */
     public SavePlayerResult savePlayer(Player player);
 }

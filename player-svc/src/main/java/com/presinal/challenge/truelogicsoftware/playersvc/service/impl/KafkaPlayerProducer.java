@@ -7,6 +7,8 @@ package com.presinal.challenge.truelogicsoftware.playersvc.service.impl;
 
 import com.presinal.challenge.truelogicsoftware.playersvc.entity.Player;
 import com.presinal.challenge.truelogicsoftware.playersvc.service.PlayerProducer;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,10 +18,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaPlayerProducer implements PlayerProducer {
 
+    @Value("${topic.name}")
+    private String topicName;
+    
+    private KafkaTemplate<String, Player> kafkaTemplate;
+
+    public KafkaPlayerProducer(KafkaTemplate<String, Player> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }    
+    
     @Override
     public void send(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        kafkaTemplate.send(topicName, player);
     }
-
-    
 }
