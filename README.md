@@ -1,4 +1,30 @@
-# truelogicssoftware-challenge
+# Truelogic Software challenge
+
+Description
+------------------------
+Create a REST service with spring and spring boot. The REST Service must have a POST endpoint that receives an array of players:
+```
+{
+  "players": [
+    {
+      "name": "Sub zero",
+      "type": "expert"
+    },
+    {
+      "name": "Scorpion",
+      "type": "novice"
+    },
+    {
+      "name": "Reptile",
+      "type": "meh"
+    }
+  ]
+}
+```
+For each "player" object based on its "type" property the player will be:
+- stored in H2 database if the type is "expert".
+- sent to kafka topic if the type is "novice".
+- if the type does not fit one of the above, you will let the user know in the endpoint response.
 
 Requirements
 ------------------------
