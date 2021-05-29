@@ -3,6 +3,7 @@ package com.presinal.challenge.truelogicsoftware.playersvc.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.presinal.challenge.truelogicsoftware.playersvc.entity.Player;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 import javax.validation.constraints.Size;
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
 public class PlayersDTO {
     
     @Size(min = 1)
+    @ApiModelProperty(name = "players", value = "A list of player", required = true)
     private List<Player> players;
 
     public PlayersDTO() {
