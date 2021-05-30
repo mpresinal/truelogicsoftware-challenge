@@ -51,13 +51,13 @@ Run the project with the command:
 ```
 ./mvnw spring-boot:run
 ```
-When the project get up and running you can start sending request to the player service with the endpoint: http://localhost:8080/players
+When the project gets up and running you can start sending requests to the players service with the endpoint: http://localhost:8080/players
 
 To read the messagas sent to the topic run:
 ```
 kafka-console-consumer.sh --topic players --from-beginning --bootstrap-server localhost:9092
 ```
 
-how test the player service
+How to test the players service
 ------------------------
-You can test the players services with swagger ui at: http://localhost:8080/swagger-ui/#/player-controller/savePlayersUsingPOST
+You can test the players service with swagger ui at: http://localhost:8080/swagger-ui/#/player-controller/savePlayersUsingPOST
