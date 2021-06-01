@@ -16,10 +16,10 @@ phases:
             - mvn clean install
     post_build:
         commands:
-            - echo Nothing to do in the post_build phase
+            - cd ..
 artifacts:
     files:
-        - player-svc*.jar
+        - player-svc-1.0.0-SNAPSHOT.jar
     base_directory: 'player-svc/target'
     discard-paths: yes
     name: player-svc-$(date +%Y-%m-%d)-$AWS_REGION
