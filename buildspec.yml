@@ -19,7 +19,6 @@ phases:
             - cd ..
 artifacts:
     files:
-        - player-svc-1.0.0-SNAPSHOT.jar
-    base_directory: 'player-svc/target'
+        - player-svc/target/player-svc-1.0.0-SNAPSHOT.jar    
     discard-paths: yes
     name: player-svc-$(date +%Y-%m-%d)-$AWS_REGION
