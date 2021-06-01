@@ -17,9 +17,9 @@ phases:
     post_build:
         commands:
             - echo Nothing to do in the post_build phase
-    artifacts:
-        files:
-            - player-svc*.jar
-        base_directory: 'player-svc/target'
-        discard-paths: yes
-        name: player-svc-$(date +%Y-%m-%d)-$AWS_REGION
+artifacts:
+    files:
+        - player-svc*.jar
+    base_directory: 'player-svc/target'
+    discard-paths: yes
+    name: player-svc-$(date +%Y-%m-%d)-$AWS_REGION
