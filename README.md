@@ -32,6 +32,8 @@ Requirements
 - Kafka 2.13-2.8.0
 - Maven 3
 
+Note: All commands below should be executed inside player-svc directory.
+
 How to build the project
 ------------------------
 To build the project execute the command:
@@ -42,7 +44,7 @@ To build the project execute the command:
 How to run the project
 ------------------------
 
-First create the kafka topic with the following command: 
+Create the kafka topic with the following command: 
 ```
 kafka-topics.sh --create --topic players --bootstrap-server localhost:9092
 ```
@@ -61,3 +63,20 @@ kafka-console-consumer.sh --topic players --from-beginning --bootstrap-server lo
 How to test the players service
 ------------------------
 You can test the players service with swagger ui at: http://localhost:8080/swagger-ui/#/player-controller/savePlayersUsingPOST
+
+
+Run with Docker
+------------------------
+When you run the project with docker you don't need to have Apache Kafka. The docker compose set up everything needs to run the project.
+
+Build the image:
+```
+docker-compose build
+```
+
+Start the containers:
+```
+docker-compose up -d
+```
+
+The service endpoint is: http://localhost:8080/players
